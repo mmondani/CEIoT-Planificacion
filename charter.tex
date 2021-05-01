@@ -7,17 +7,17 @@ codirector, % Uncomment to add a codirector to the title page
 
 
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
-\titulo{Título del proyecto} 
+\titulo{Comunicador para centrales de alarma} 
 
 % Nombre del posgrado, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \degreename
-\posgrado{Carrera de Especialización en Sistemas Embebidos} 
-%\posgrado{Carrera de Especialización en Internet de las Cosas} 
+%\posgrado{Carrera de Especialización en Sistemas Embebidos} 
+\posgrado{Carrera de Especialización en Internet de las Cosas} 
 %\posgrado{Carrera de Especialización en Intelegencia Artificial}
 %\posgrado{Maestría en Sistemas Embebidos} 
 %\posgrado{Maestría en Internet de las cosas}
 
 % Tu nombre, se puede usar el cualquier lugar del documento con el comando \authorname
-\autor{Nombre del Autor} 
+\autor{Mariano Mondani} 
 
 % El nombre del director y co-director, se puede usar el cualquier lugar del documento con el comando \supname y \cosupname y \pertesupname y \pertecosupname
 \director{Nombre del Director}
@@ -27,8 +27,8 @@ codirector, % Uncomment to add a codirector to the title page
 \pertenenciaCoDirector{FIUBA}
 
 % Nombre del cliente, quien va a aprobar los resultados del proyecto, se puede usar con el comando \clientename y \empclientename
-\cliente{Nombre del cliente}
-\empresaCliente{Empresa del cliente}
+\cliente{Claudio Bongiorno}
+\empresaCliente{X-28 Alarmas}
 
 % Nombre y pertenencia de los jurados, se pueden usar el cualquier lugar del documento con el comando \jurunoname, \jurdosname y \jurtresname y \perteunoname, \pertedosname y \pertetresname.
 \juradoUno{Nombre y Apellido (1)}
@@ -68,7 +68,7 @@ codirector, % Uncomment to add a codirector to the title page
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
-0      & Creación del documento                                 &\fechaInicioName \\ \hline
+0      & Creación del documento\newline Se completa hasta el punto xx inclusive &30/04/2021 \\ \hline
 %1      & Se completa hasta el punto 4 inclusive                 & dd/mm/aaaa \\ \hline
 %2      & Se completa hasta el punto 7 inclusive
 %		  Se puede agregar algo más \newline
@@ -92,7 +92,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en \textcolor{red}{la implementación de un prototipo de un sistema de control de temperatura de un calefón}, y tendrá un presupuesto preliminar estimado de \textcolor{red}{600} hs de trabajo y \textcolor{red}{\$XXX}, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en la implementación de un sistema que permitirá comunicar una alarma domiciliaria con una aplicación móvil, y tendrá un presupuesto preliminar estimado de 600 hs de trabajo, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -115,134 +115,155 @@ Se adjunta a esta acta la planificación inicial.
 \section{Descripción técnica-conceptual del proyecto a realizar}
 \label{sec:descripcion}
 
+%\begin{consigna}{black} 
 
-\begin{consigna}{red} % El bloque "consigna" se usa para poner texto en rojo y dar una pequeña ayuda sobre cómo completar la sección
+Desde hace más de una década, es común encontrar en un sistema de alarma hogareño algún tipo de comunicador. Generalmente estos comunicadores permiten tanto recibir avisos cuando se produce un evento en la alarma y enviarle comandos para que se realice algun a acción en el sistema.
 
-El objetivo es que el lector en una o dos páginas entienda de qué se trata el proyecto y cuáles son sus desafíos, su motivación y su importancia.
+Con el paso de los años, la forma de conexión entre el usuario y su alarma ha ido cambiando. Comenzó siendo a través de la línea telefónica, para luego, pasar a llevarse a cabo mediante la red celular. 
 
-Se debe destacar claramente cuál es el valor que agrega el proyecto a realizar. ``El presente proyecto se destaca especialmente por incorporar tal cosa... Esto lo diferencia de otros sistemas similares en que ...''
+Por muchos años los usuarios percibieron como ágil y novedosa la comunicación a través de mensajes de texto (SMS). El comunicador le enviaba un mensaje cuando se producía algún evento en la alarma y el usuario podía realizar una acción enviando comandos sencillos. Sin embargo, la comunicación mediante SMS fue quedando obsoleta en la vida cotideana y por lo tanto comenzó a ser considerado un medio poco confiable de interacción con un sistema de seguridad.
 
-Puede ser útil incluir en esta sección la respuesta a alguna de estas preguntas:
+Impulsada por esta situación, la empresa comenzó a orientar sus esfuerzos a desarrollar nuevos productos que les permitan a los usuarios relacionarse con sus alarmas de una forma más sencilla, consistente y robusta.
+
+En este contexto surge el presente proyecto: un equipo que se conecta al sistema de alarma como cualquier otro dispositivo y que es acompañado mediante una aplicación que permite conocer el estado de su alarma, recibir eventos y enviar comandos.
+
+A pesar de que actualmente la competencia de X-28 Alarmas ofrece comunicadores compatibles con las centrales de alarma de la marca, el principal difirencial que va a ofrecer este nuevo producto es la posibilidad de acceder a una gran variedad de funcionalidades de la alarma. 
+
+Esto se debe a que los comunicadores universales solo ofrecen un conjunto de funciones muy limitado, generalmente activar y desactivar la central, recibir notificaciones cuando el sistema está sonando y, en algunos casos, manejar una o dos cargas eléctricas. En cambio, el producto objeto del trabajo final, busca cubrir una más amplia gama de necesidades:
 
 \begin{itemize}
-	\item ¿Cómo se vincula este proyecto con la misión de la organización?
-	\item ¿Cómo se inserta este proyecto en el modelo de negocio de la organización?
-	\item ¿Ayuda a la explicación si se incluye un lienzo Canvas del Modelo de Negocio?
-	\item ¿En qué estado del ciclo de vida está el producto que se desea reemplazar o mejorar?
-	\item ¿Cuáles son las necesidades que debe satisfacer?
-	\item ¿Por dónde pasa la innovación?
+	\item Asociar múltiples alarmas a un mismo usuario, con distintos niveles de acceso.
+	\item Conocer el estado de cada uno de los sensores que componen la alarma.
+	\item Permitir asignaler un nombre distintivo a cada: alarma, sensor, usuario y carga eléctrica.
+	\item Recibir notificaciones no solo por disparos en la alarma, sino también por problemas en la red eléctrica, por activación o desactivación del sistema distinguiendo qué usuario lo hizo, por eventos personalizados, etc.
+	\item Ser compatible con la línea de productos de automatización de X-28 Alarmas.
 \end{itemize}
 
-La descripción técnica-conceptual \textbf{debe incluir al menos un diagrama en bloques del sistema} y una frase como la siguiente: ``En la Figura \ref{fig:diagBloques} se presenta el diagrama en bloques del sistema. Se observa que...''. Luego recién más abajo de haber puesto esta frase, se pone la figura. La regla es que las figuras nunca pueden ir antes de ser mencionadas en el texto, porque sino el lector no entiende por qué de pronto aparece una figura.
+Además del equipo que va a ser conectado en la alarma y de la aplicación utilizada por el usuario, el sistema propuesto en este trabajo se completa con el desarrollo de un backend que permita la comunicación entre alarmas y usuarios. 
+
+En la Figura \ref{fig:diagBloques} se muestra el diagrama en bloques del sistema. Como puede verse el comunicador se va a conectar a Internet mediante dos posibles vías: Wi-Fi o red celular. Al contemplar dos formas de conexión, no solo se otorga mayor robustez a la comunicación, sino también se cubre una mayor variedad de casos de uso. Este equipo podría ser usado mediante Wi-Fi en el caso en el que la cobertura celular, en el lugar de la instalación, fuera deficiente o en el caso en el que el usuario no quiera atarse a un abono mensual en relación al servicio celular. Por el contrario, podría ser utilizado a través de la red celular en aquellas situaciones en donde no hay una red Wi-Fi.
 
 %\vspace{25px}
 
 \begin{figure}[htpb]
 \centering 
-\includegraphics[width=.5\textwidth]{./Figuras/diagBloques.png}
+\includegraphics[width=\textwidth]{./Figuras/diagBloques.png}
 \caption{Diagrama en bloques del sistema}
 \label{fig:diagBloques}
 \end{figure}
 
 \vspace{25px}
 
-El tamaño de la tipografía en TODAS las figuras debe ser adecuado para que NO pase lo que ocurre acá, donde el lector debe esforzarse para poder leer el texto. Los colores usados en el diagrama deben ser adecuados, tal que ayuden a comprender mejor el diagrama, preferentemente en la gama de colores pastel.
-\end{consigna}
+Finalmente, puede verse que el backend se compone de:
+
+\begin{itemize}
+	\item En broker que se encarga de la comunicación entre las apps de los usuarios finales y los comunicadores
+	\item Una API de tipo REST utilizada por las apps para: login, obtener información de la alarma, enviar comandos al comunicador, etc.
+	\item Una base de datos en donde se lleva un registro de los comunicadores, los usuarios de las apps y el estado y configuración de cada uno de los sistemas de alarma.
+\end{itemize}
+
+%\end{consigna}
 
 
 \section{Identificación y análisis de los interesados}
 \label{sec:interesados}
 
-\begin{consigna}{red} 
-Nota: (borrar esto y todas las consignas en color rojo antes de entregar este documento).
- 
-Es inusual que una misma persona esté en más de un rol, incluso en proyectos chicos.
- 
-Si se considera que una persona cumple dos o más roles, entonces sólo dejarla en el rol más importante. Por ejemplo:
+%\begin{consigna}{black} 
 
-\begin{itemize}
-\item Si una persona es Cliente pero también colabora u orienta, dejarla solo como Cliente.
-\item Si una persona es el Responsable, no debe ser colocado también como Miembro del equipo.
-\end{itemize}
-
-Pero en cambio sí es usual que el Cliente y el Auspiciante sean el mismo, por ejemplo.
-
-\begin{table}[ht]
+\begin{table}[h!t]
 %\caption{Identificación de los interesados}
 %\label{tab:interesados}
-\begin{tabularx}{\linewidth}{@{}|l|X|X|l|@{}}
+\begin{tabularx}{\linewidth}{@{}|l|X|X|X|@{}}
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Rol           & Nombre y Apellido & Organización 	& Puesto 	\\ \hline
-Auspiciante   &                   &              	&        	\\ \hline
-Cliente       & \clientename      &\empclientename	&        	\\ \hline
-Impulsor      &                   &              	&        	\\ \hline
+Auspiciante   & \clientename      &\empclientename	& Jefe de área       	\\ \hline
+Cliente       & \clientename      &\empclientename	& Jefe de área       	\\ \hline
+Impulsor      & \clientename      &\empclientename	& Jefe de área       	\\ \hline
 Responsable   & \authorname       & FIUBA        	& Alumno 	\\ \hline
-Colaboradores &                   &              	&        	\\ \hline
+Colaboradores & Norberto Vergani \newline
+			   Claudio Bongiorno \newline
+			   Pablo Marchant \newline
+			   Docentes CEIoT   & \empclientename \newline
+			   					\empclientename \newline
+			   					\empclientename \newline
+			   					FIUBA             & Director \newline 
+			   									  Jefe de área\newline
+			   									  Jefe de área\newline
+			   									  -       	\\ \hline
 Orientador    & \supname	      & \pertesupname 	& Director Trabajo final \\ \hline
-Equipo        & miembro1 \newline 
-				miembro2          &              	&        	\\ \hline
-Opositores    &                   &              	&        	\\ \hline
-Usuario final &                   &              	&        	\\ \hline
+Usuario final & Clientes de X-28 Alarmas & -             	& -       	\\ \hline
 \end{tabularx}
 \end{table}
 
-El Director suele ser uno de los Orientadores.
 
-No dejar celdas vacías; si no hay nada que poner en una celda colocar un signo ``-''.
-
-No dejar filas vacías; si no hay nada que poner en una fila entonces eliminarla.
-
-Es deseable listar a continuación las principales características de cada interesado.
- 
-Por ejemplo:
 \begin{itemize}
-	\item Auspiciante: es riguroso y exigente con la rendición de gastos. Tener mucho cuidado con esto.
-	\item Equipo: Juan Perez, suele pedir licencia porque tiene un familiar con una enfermedad. Planificar considerando esto.
-	\item Orientador: María Gómez va a poder ayudar mucho con la definición de los requerimientos.
+	\item Auspiciante: buscando completar la línea de productos de seguridad comercializados por la
+empresa, está interesado en que el proyecto se complete en el tiempo establecido y está dispuesto a
+invertir para ayudar a lograrlo. Debido a ser una empresa que vende productos de seguridad, se pone
+especial atención en mantener el prestigio y la confianza que los clientes depositan en la empresa, por
+lo que es exigentes en cuanto a la calidad y confiabilidad del producto.
+	\item Cliente: es exigente en cuanto a la integración de los nuevos dispositivos con la línea actual de productos. Su objetivo es que los nuevos equipos sean confiables y robustos en cuanto a su usabilidad.
+	\item Colaboradores: Norberto Vergani tiene una amplia experiencia tanto en el diseño de hardware con
+sistemas embebidos como con la programación del firmware. Se deben aprovechar especialmente sus
+conocimientos en este último tema.\\
+Claudio Bongiorno cuenta con conocimientos en el diseño de hardware y a participado en el diseño e implementación de gran parte de los productos actuales de la empresa. Sus sugerencias van a ayudar en el diseño del circuito impreso.\\
+Pablo Marchant es el jefe de área de Comercio exterior, y va a ser el encargado de conseguir muchos de
+los componentes necesarios para el hardware. Su colaboración va a permitir encontrar la forma de reducir los costos en los componentes electrónicos.
+	\item Usuario final: los clientes de X-28 Alarmas estás acostumbrados a que los productos de la marca sean sencillos de utilizar. Además buscan que los nuevos productos que se ofrecen sean compatibles con los ya existentes, permitiéndoles agregarlos sin problemas a sus sistemas de alarma.
 \end{itemize}
 
-\end{consigna}
+%\end{consigna}
 
 
 
 \section{1. Propósito del proyecto}
 \label{sec:proposito}
 
-\begin{consigna}{red}
-¿Por qué se hace el proyecto? ¿Qué se quiere lograr? 
-
-Se recomienda que sea solo un párrafo que empiece diciendo ``El propósito de este proyecto es...''.
-\end{consigna}
+%\begin{consigna}{red}
+El propósito de este proyecto consiste en diseñar e implementar un comunicador, una aplicación y un backend que le permita a los usuarios de las alarmas de X-28 comunicarse con sus sistemas de seguridad. Se busca lograr, por un lado, un producto que no solo sea sencillo de utilizar sino también robusto y seguro. Por otro lado, a lo largo del proyecto, se buscarán introducir prácticas de programación y periféricos de hardware que puedan ser reutilizados en otros proyectos  y por lo tanto aumenten la base de conocimiento del sector de Investigación y Desarrollo.
+%\end{consigna}
 
 \section{2. Alcance del proyecto}
 \label{sec:alcance}
 
-\begin{consigna}{red}
-¿Qué se incluye y que no se incluye en este proyecto?
+%\begin{consigna}{red}
 
-Se refiere al trabajo a hacer para entregar el producto o resultado especificado. 
+El proyecto incluye:
 
-Explicitar todo lo quede comprendido dentro del alcance del proyecto.
+\begin{itemize}
+	\item El desarrollo de un sistema embebido capaz de conectarse a un sistema de alarma y a Internet , mediante Wi-Fi y red celular. Se incluye tanto hardware como firmware.
+	\item El desarrollo del prototipo de una aplicación híbrida (utilizable en Android y en la Web) para poder controlar las alarmas
+	\item El diseño del modelo de datos utilizado en la base de datos del backend
+	\item El desarrollo de un broker que permita la comunicación entre las aplicaciones y los comunicadores.
+	\item El desarrollo de una API REST que le permita a las aplicaciones obtener datos de las alarmas y enviarles comandos
+\end{itemize}
 
-Explicitar además todo lo que no quede incluido (``El presente proyecto no incluye...'')
+El proyecto no incluye:
 
-\end{consigna}
+\begin{itemize}
+	\item Diseño del gabinete para el comunicador.
+	\item Las implementaciones particulares para que la aplicación funcione en iOS.
+	\item Consideraciones de diseño para el despliegue del broker y la API en un entorno cloud, contemplando alta disponibilidad y escalamiento.
+\end{itemize}
+
+%\end{consigna}
 
 
 \section{3. Supuestos del proyecto}
 \label{sec:supuestos}
 
-\begin{consigna}{red}
-``Para el desarrollo del presente proyecto se supone que: ...''
+%\begin{consigna}{red}
+Para el desarrollo del presente proyecto se supone que:
 
 \begin{itemize}
-	\item Supuesto 1
-	\item Supuesto 2...
+	\item Se podrá diseñar e implementar el producto, logrando su correcto funcionamiento.
+	\item No habrá dificultades para conseguir los componentes electrónicos necesarios.
+	\item Se contará con los concocimientos necesarios para desarrollar la aplicación híbrida y el backend. En caso de no contar con ciertos conocimientos, se los podrá investigar y aplicar satisfactoriamente.
+	\item Dentro de la lista de proyectos actualmente en curso dentro del área de Investigación y Desarrollo, se le dará la dedicación suficiente al presente proyecto y no se lo suspenderá en favor del desarrollo de otros productos.
 \end{itemize}
 
-Por ejemplo, se podrían incluir supuestos respecto a disponibilidad de tiempo y recursos humanos y materiales, sobre la factibilidad técnica de distintos aspectos del proyecto, sobre otras cuestiones que sean necesarias para el éxito del proyecto como condiciones macroeconómicas o reglamentarias.
-\end{consigna}
+%\end{consigna}
 
 \section{4. Requerimientos}
 \label{sec:requerimientos}
