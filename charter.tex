@@ -376,37 +376,63 @@ Se debe indicar explícitamente el criterio para calcular los \textit{story poin
 \section{7. Desglose del trabajo en tareas}
 \label{sec:wbs}
 
-\begin{consigna}{red}
-El WBS debe tener relación directa o indirecta con los requerimientos.  Son todas las actividades que se harán en el proyecto para dar cumplimiento a los requerimientos. Se recomienda mostrar el WBS mediante una lista indexada:
+%\begin{consigna}{red}
 
 \begin{enumerate}
-\item Grupo de tareas 1
-	\begin{enumerate}
-	\item Tarea 1 (tantas hs)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas hs)
-	\end{enumerate}
-\item Grupo de tareas 2
-	\begin{enumerate}
-	\item Tarea 1 (tantas hs)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas hs)
-	\end{enumerate}
-\item Grupo de tareas 3
-	\begin{enumerate}
-	\item Tarea 1 (tantas hs)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas hs)
-	\item Tarea 4 (tantas hs)
-	\item Tarea 5 (tantas hs)
-	\end{enumerate}
+	\item Investigación preliminar (65 horas)
+		\begin{enumerate}
+			\item Investigación acerca de los posibles módulos Wi-Fi y elección de uno de ellos (10 horas)
+			\item Investigación acerca de los posibles módulos celulares y elección de uno de ellos (10 horas)
+			\item Elección del microcontrolador a usar y familiarización con el mismo (15 horas)
+			\item Desarrollo del protocolo de comunicación entre los comunicadores y el broker (30 horas)
+		\end{enumerate}
+	\item Desarrollo del hardware (60 horas)
+		\begin{enumerate}
+			\item Diseño del diagrama esquemático y determinación del BOM (20 horas)
+			\item Ruteo del PCB y fabricación de un prototipo (30 horas)
+			\item Verificación del prototipo (10 horas)
+		\end{enumerate}
+	\item Desarrollo del firmware (230 horas)
+		\begin{enumerate}
+			\item Implementación del driver para el módulo Wi-Fi (30 horas)
+			\item Testeo del driver para el módulo Wi-Fi (10 horas)
+			\item Implementación del driver para el módulo celular (30 horas)
+			\item Testeo del driver para el módulo celular (10 horas)
+			\item Implementación de la capa de comunicación con el sistema de alarma (40 horas)
+			\item Testeo de la capa de comunicación con la alarma (10 horas)
+			\item Implementación del protocolo de comunicación con el broker (20 horas)
+			\item Testeo del protocolo de comunicación con el broker (5 horas)
+			\item Programación de la aplicación principal e integración de los drivers (60 horas)
+			\item Testeo del firmware (15 horas)
+		\end{enumerate}
+	\item Desarrollo del backend (80 horas)
+		\begin{enumerate}
+			\item Definición del modelo de datos para la base de datos (5 horas)
+			\item Implementación del broker (25 horas)
+			\item Testeo del broker (10 horas)
+			\item Implementación de la API REST (20 horas)
+			\item Testeo de la API REST (10 horas)
+			\item Testeo de integración del comunicador con el broker (10 horas)
+		\end{enumerate}
+	\item Desarrollo de la aplicación híbrida (160 horas)
+		\begin{enumerate}
+			\item Profundización de los conocimientos para el desarrollo de la aplicación (25 horas)
+			\item Maquetado de la aplicación (20 horas)
+			\item Implementación de la aplicación (90 horas)
+			\item Testeo de la aplicación (10 horas)
+			\item Integración entre la aplicación y el backend (15 horas)
+		\end{enumerate}
+	\item Presentación del proyecto (70 horas)
+		\begin{enumerate}
+			\item Escritura del informa de avance (15 horas)
+			\item Escritura del informa final (40 horas)
+			\item Escritura de la presentación pública (15 horas)
+		\end{enumerate}
 \end{enumerate}
 
-Cantidad total de horas: (tantas hs)
+Cantidad total de horas: 665 horas
 
-Se recomienda que no haya ninguna tarea que lleve más de 40 hs. 
-
-\end{consigna}
+%\end{consigna}
 
 \section{8. Diagrama de Activity On Node}
 \label{sec:AoN}
