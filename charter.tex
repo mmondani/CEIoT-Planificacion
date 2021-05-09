@@ -574,31 +574,40 @@ Referencias:
 \section{12. Gestión de riesgos}
 \label{sec:riesgos}
 
-\begin{consigna}{red}
-a) Identificación de los riesgos (al menos cinco) y estimación de sus consecuencias:
- 
-Riesgo 1: detallar el riesgo (riesgo es algo que si ocurre altera los planes previstos de forma negativa)
+%\begin{consigna}{red}
+
+Riesgo 1:pérdida del prototipo del comunicador.
 \begin{itemize}
-	\item Severidad (S): mientras más severo, más alto es el número (usar números del 1 al 10).\\
-	Justificar el motivo por el cual se asigna determinado número de severidad (S).
-	\item Probabilidad de ocurrencia (O): mientras más probable, más alto es el número (usar del 1 al 10).\\
-	Justificar el motivo por el cual se asigna determinado número de (O). 
+	\item Severidad (7): al contar con un único prototipo, en caso de producirse un daño irreparable, el proyecto se detiene hasta que se construya uno nuevo.
+	\item Probabilidad de ocurrencia (4): se toman los recaudos necesarios para evitar dañar el prototipo
 \end{itemize}   
 
-Riesgo 2:
+Riesgo 2: imposibilidad de conseguir componentes electrónicos clave.
 \begin{itemize}
-	\item Severidad (S): 
-	\item Ocurrencia (O):
+	\item Severidad (7): los componentes de mayor importancia son el módulo Wi-Fi y el módulo celular. En caso de no conseguir los componentes elegidos, tanto el PCB como el firmware se verán seriamente afectados. 
+	\item Ocurrencia (2): la empresa cuenta con varios proveedores de componentes, por lo que es difícil no poder conseguir uno de estos.
 \end{itemize}
 
-Riesgo 3:
+Riesgo 3: retraso en la fabricación del PCB
 \begin{itemize}
-	\item Severidad (S): 
-	\item Ocurrencia (O):
+	\item Severidad (6): un retraso en la fabricación retrasaría el desarrollo del firmware y por lo tanto el del backend y el de la app.
+	\item Ocurrencia (2): de acuerdo a la experiencia que se tiene con el proveedor de PCB, se concluye que en raras ocasiones se produjo un retraso y, en caso de ocurrir, fue un retraso de unos pocos días.
+\end{itemize}
+
+Riesgo 4: el proyecto queda suspendido frente a otros proyectos más prioritarios.
+\begin{itemize}
+	\item Severidad (10): una decisión por parte del directorio que implique suspender este proyecto debido a que hay otros más prioritarios puede provocar que no se puedan cumplir con los plazos establecidos en esta planificación.
+	\item Ocurrencia (2): debido al fuerte interés de la empresa por completar su oferta de productos con este tipo de comunicadores, es difícil pensar que se vaya a dejar de lado este proyecto.
+\end{itemize}
+
+Riesgo 5: retrasos en la implementación de la app
+\begin{itemize}
+	\item Severidad (8): una demora en la implementación de la app que acompaña al comunicador retrasaría la salida del producto.
+	\item Ocurrencia (5): debido al bajo dominio que se tiene en relación al desarrollo de aplicaciones híbridas, pueden aparecer demoras debido a problemas con la implementación.
 \end{itemize}
 
 
-b) Tabla de gestión de riesgos:      (El RPN se calcula como RPN=SxO)
+Tabla de gestión de riesgos:      (El RPN se calcula como RPN=SxO)
 
 \begin{table}[htpb]
 \centering
@@ -606,33 +615,34 @@ b) Tabla de gestión de riesgos:      (El RPN se calcula como RPN=SxO)
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Riesgo & S & O & RPN & S* & O* & RPN* \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
+   1. Pérdida del prototipo    & 7  & 4  &  28   &  2  &  2  &   4   \\ \hline
+   2. Imposibilidad de conseguir componentes   & 7  & 2  &  14   &    &    &      \\ \hline
+   3. Retraso en la fabricación del PCB   & 6  & 2  &  12   &    &    &      \\ \hline
+   4. Suspensión del proyecto   & 10  & 2  & 20   &    &    &      \\ \hline
+   5. Retrasos en la implementación de la app   & 8  & 5  &  40   & 4   & 2   &  8    \\ \hline
 \end{tabularx}%
 \end{table}
 
 Criterio adoptado: 
-Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a...
+Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a 25.
 
 Nota: los valores marcados con (*) en la tabla corresponden luego de haber aplicado la mitigación.
 
-c) Plan de mitigación de los riesgos que originalmente excedían el RPN máximo establecido:
+Plan de mitigación de los riesgos que originalmente excedían el RPN máximo establecido:
  
-Riesgo 1: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
-  Nueva asignación de S y O, con su respectiva justificación:
-  - Severidad (S): mientras más severo, más alto es el número (usar números del 1 al 10).
-          Justificar el motivo por el cual se asigna determinado número de severidad (S).
-  - Probabilidad de ocurrencia (O): mientras más probable, más alto es el número (usar del 1 al 10).
-          Justificar el motivo por el cual se asigna determinado número de (O).
+Riesgo 1: encargar varias muestras del PCB y armar varios prototipos
+\begin{itemize}
+  \item Severidad (2): en caso de dañarse el primer prototipo, inmediatamente de lo puede reemplazar por otro. Sin embargo, se debe evitar la repetición de esta situación para evitar que otros miembros del equipo de Desarrollo pierdan tiempo en armar más prototipos.
+  \item Probabilidad de ocurrencia (2): es difícil qué, debido a una mala manipulación, se dañe más de un prototipo.
+\end{itemize}
 
-Riesgo 2: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
- 
-Riesgo 3: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
+Riesgo 5: anticiparse a la etapa del proyecto relacionada con la implementación de la app e ir haciendo pruebas de concepto de distintos aspectos de la aplicación,  para profundizar los conocimientos necesarios.
+\begin{itemize}
+  \item Severidad (4): las posibles demoras se van a reducir ya que se va a contar un conocimiento más profundo del framework a usar.
+  \item Probabilidad de ocurrencia (2): a pesar de que, tal vez, no se llegue a la etapa de implementar la app con todos los conocimientos necesarios, la cantidad de incertidumbres respecto al framework a usar va a ser menor. 
+\end{itemize} 
 
-\end{consigna}
+%\end{consigna}
 
 
 \section{13. Gestión de la calidad}
