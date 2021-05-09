@@ -519,8 +519,7 @@ Descripción &
 
 \section{11. Matriz de asignación de responsabilidades}
 \label{sec:responsabilidades}
-\begin{consigna}{red}
-Establecer la matriz de asignación de responsabilidades y el manejo de la autoridad completando la siguiente tabla:
+%\begin{consigna}{red}
 
 \begin{table}[htpb]
 \centering
@@ -536,18 +535,25 @@ Establecer la matriz de asignación de responsabilidades y el manejo de la autor
   \cellcolor[HTML]{C0C0C0} &
   Responsable &
   Orientador &
-  Equipo &
+  Auspiciante &
   Cliente \\ \cline{3-6} 
 \rowcolor[HTML]{C0C0C0} 
 \multirow{-3}{*}{\cellcolor[HTML]{C0C0C0}\begin{tabular}[c]{@{}c@{}}Código\\ WBS\end{tabular}} &
   \multirow{-3}{*}{\cellcolor[HTML]{C0C0C0}Nombre de la tarea} &
   \authorname &
   \supname &
-  Nombre de alguien &
+  Norberto Vergani &
   \clientename \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
- &  &  &  &  &  \\ \hline
+ 1 & Investigación preliminar & P & I & C & A \\ \hline
+ 2 & Desarrollo del hardware & P & I & I & C/A \\ \hline
+ 3 & Desarrollo del firmware & P & C & A & I \\ \hline
+ 4 & Desarrollo del backend & P & C & I & A \\ \hline
+ 5.1 & Profundización de los conocimientos & P & C & - & - \\ \hline
+ 5.2 & Maquetado de la app & P & I & I & A \\ \hline
+ 5.3 & Implementación de la app & P & C & I & A \\ \hline
+ 5.4 & Testeo de la app & P & - & I & I \\ \hline
+ 5.5 & Integración & P & I & I & A \\ \hline
+ 6 & Presentación del proyecto & P & A & - & - \\ \hline
 \end{tabular}%
 }
 \end{table}
@@ -563,12 +569,7 @@ Referencias:
 \end{itemize}
 } %footnotesize
 
-Una de las columnas debe ser para el Director, ya que se supone que participará en el proyecto.
-A su vez se debe cuidar que no queden muchas tareas seguidas sin ``A'' o ``I''.
-
-Importante: es redundante poner ``I/A'' o ``I/C'', porque para aprobarlo o responder consultas primero la persona debe ser informada.
-
-\end{consigna}
+%\end{consigna}
 
 \section{12. Gestión de riesgos}
 \label{sec:riesgos}
