@@ -71,7 +71,7 @@ Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios 
 0      & Creación del documento\newline Se completa hasta el punto 8 inclusive, sin incluir el punto 5 &30/04/2021 \\ \hline
 1      & Se corrigen errores en la Descipción, Identificación de los interesados y Alcance.\newline Se completa hasta el punto 12 inclusive.                  & 09/05/2021 \\ \hline
 2      & Se corrigen errores en Entregables del proyecto y Gestión de riegos. \newline
-Se completan los puntos 5, xxxx					& 15/05/2021 \\ \hline
+Se completan los puntos 5, 13 y 14					& 16/05/2021 \\ \hline
 %		  Se puede agregar algo más \newline
 %		  En distintas líneas \newline
 %		  Así                                                    & dd/mm/aaaa \\ \hline
@@ -264,7 +264,7 @@ Para el desarrollo del presente proyecto se supone que:
 			\item Incluir un led bicolor (rojo y verde) para señalizar el estado de funcionamiento y de error.
 			\item Incluir una interfaz que permita conectar el comunicador al bus del sistema de alarma.
 			\item Tener una memoria EEPROM para almacenar información de configuración.
-			\item Tener un módulo Wi-Fi
+			\item Tener un módulo Wi-Fi.
 			\item Tener un módulo celular pueda conectarse a la red celular de 2G y de 4G Cat M1.
 			\item El PCB debe respetar las dimensiones del gabinete en el que va a ser comercializado el comunicador.
 		\end{enumerate}
@@ -295,7 +295,7 @@ Para el desarrollo del presente proyecto se supone que:
 			\item Incluir un login.
 			\item Proceso guiado para ayudar a configurar la red Wi-Fi a la que se va a conectar el comunicador.
 			\item Cada usuario de la aplicación puede agregar múltiples alarmas para gestionarlas.
-			\item Mostrar el estado de la alarma (activada, desactivada, sonando) y problemas que pueda presentar (batería baaja, red eléctrica cortada, error de comunicación, etc).
+			\item Mostrar el estado de la alarma (activada, desactivada, sonando) y problemas que pueda presentar (batería baja, red eléctrica cortada, error de comunicación, etc).
 			\item Permitir enviar comandos a la alarma: activar, desactivar, cambiar su modo, disparar manualmente, incluir y excluir sensores, etc.
 			\item Mostrar el estado de cada uno de los sensores.
 			\item Mostrar el estado de cada una de las cargas eléctrica de la alarma y permitir encenderlas o apagarlas.
@@ -315,10 +315,10 @@ Para el desarrollo del presente proyecto se supone que:
 			\item Todos los endpoints deben incluir un token exclusivo para cada aplicación.
 			\item Implementar un endpoint para que las aplicaciones puedan autenticarse.
 			\item Incluir endpoints para solicitar información de los comunicadores.
-			\item Incluir endpoints para realizar el CRUD de comunicadores
-			\item Incluir endpoints para realizar el CRUD de los sensores de una alarma
-			\item Incluir endpoints para realizar el CRUD de las usuarios de una alarma
-			\item Incluir endpoints para realizar el CRUD de las cargas eléctricas de una alarma
+			\item Incluir endpoints para realizar el CRUD de comunicadores.
+			\item Incluir endpoints para realizar el CRUD de los sensores de una alarma.
+			\item Incluir endpoints para realizar el CRUD de las usuarios de una alarma.
+			\item Incluir endpoints para realizar el CRUD de las cargas eléctricas de una alarma.
 			\item Incluir endpoints para enviar comandos a los comunicadores.
 		\end{enumerate}
 	\item Requerimientos de la base de datos
@@ -717,39 +717,345 @@ Riesgo 5: anticiparse a la etapa del proyecto relacionada con la implementación
 \section{13. Gestión de la calidad}
 \label{sec:calidad}
 
-\begin{consigna}{red}
-Para cada uno de los requerimientos del proyecto indique:
+%\begin{consigna}{red}
+
 \begin{itemize} 
-\item Req \#1: copiar acá el requerimiento.
+	\item Requerimiento \#1.1: Incluir una interfaz sencilla con el usuario. Debe existir un único pulsador para que el usuario realice acciones relacionadas con la red Wi-Fi.
+	\begin{itemize}
+		\item Verificación: uno de las características que debe informar la hoja de datos del
+módulo WiFi elegido es la de WPS (WiFi Protected Setup). Es una función que permite conectar un dispositivo a una red WiFi de forma sencilla. Este proceso debe ser disparado en el equipo presionando un botón
+		\item Validación: disparar el proceso de configuración mediante WPS tanto en el
+comunicador como en el router WiFi y comprobar que el equipo se conecta satisfactoriamente a la red WiFi.
 
-\begin{itemize}
-	\item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente. Detallar 
-	\item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido. Detallar  
+	\end{itemize}
+		
+	\item Requerimiento \#1.2: Incluir un led bicolor (rojo y verde) para señalizar el estado de funcionamiento y de error.
+	\begin{itemize}
+		\item Verificación: diseñar el firmware para, a través de un led bicolor, informar todos los estados de funcionamiento del equipo: desconectado, buscando una red, conectado, no hay red disponible, etc
+		\item Validación: realizar pruebas que hagan que el dispositivo atraviese todos los
+estados de funcionamiento por los que puede pasar y comprobar que las indicaciones a través del led bicolor sean claras.
+	\end{itemize}
+			
+	\item Requerimiento \#1.3: Incluir una interfaz que permita conectar el comunicador al bus del sistema de alarma.
+	\begin{itemize}
+		\item Verificación: el esquemático y el PCB del comunicador debe incluir el hardware necesario para poder conectarlo al bus de comunicación de la alarma. 
+		\item Validación: realizar mediciones mediante un osciloscopio conectando el comunicador al bus de la alarma para determinar que las señales que llegan al microcontrolador tengan los niveles de tensión correctos.
+	\end{itemize}
+			
+	\item Requerimiento \#1.4: Tener una memoria EEPROM para almacenar información de configuración.
+	\begin{itemize}
+		\item Verificación: el esquemático y el PCB del comunicador debe incluir una memoria EEPROM.
+		\item Validación: se revisará el esquemático y el PCB para corroborar la conexión entre el microcontrolador y la memoria EEPROM.
+	\end{itemize}
+			
+	\item Requerimiento \#1.5: Tener un módulo Wi-Fi. 
+	\begin{itemize}
+		\item Verificación: el esquemático y el PCB del comunicador debe incluir un módulo Wi-Fi.
+		\item Validación: se revisará el esquemático y el PCB para corroborar la conexión entre el microcontrolador y el módulo Wi-Fi.
+	\end{itemize}
+			
+	\item Requerimiento \#1.6: Tener un módulo celular pueda conectarse a la red celular de 2G y de 4G Cat M1.
+	\begin{itemize}
+		\item Verificación: el esquemático y el PCB del comunicador debe incluir un módulo celular. El módulo elegido debe poder conectarse a redes celulares de 2G y de 4G Cat M1.
+		\item Validación: se revisará el esquemático y el PCB para corroborar la conexión entre el microcontrolador y el módulo celular. Mediante un firmware de prueba se corroborará que el módulo puede conectarse a ambos tipos de redes.
+	\end{itemize}
+			
+	\item Requerimiento \#1.7: El PCB debe respetar las dimensiones del gabinete en el que va a ser comercializado el comunicador.
+	\begin{itemize}
+		\item Verificación: al momento de diseñar el PCB se tendrán en cuenta las dimensiones del gabinete elegido para comercializar el comunicador.
+		\item Validación: se colocará el PCB fabricado dentro del gabinete elegido para validad la su correcta sujeción.
+	\end{itemize}
+			
+	\item Requerimiento \#2.1: Configuración de la red Wi-Fi a la que conectarse mediante WPS.
+	\begin{itemize}
+		\item Verificación: el módulo WiFi elegido debe soportar esta funcionalidad
+		\item Validación: disparar el proceso de WPS a través del driver desarrollado para el
+módulo Wi-Fi y comprobar que el dispositivo se conecta a la red Wi-Fi.
+	\end{itemize}
+			
+	\item Requerimiento \#2.2: Configuración de la red Wi-Fi a la que conectarse mediante la app.
+	\begin{itemize}
+		\item Verificación: el firmware debe incluir un mecanismo para poder recibir los datos para conectar a una red Wi-Fi desde la app.
+		\item Validación: realizar una prueba en la que se simule el envío de los datos de conexión a una red Wi-Fi de igual forma que lo haría la app.
+	\end{itemize}
+			
+	\item Requerimiento \#2.3: Interpretar los comandos AT del módulo celular.
+	\begin{itemize}
+		\item Verificación: el firmware debe incluir un driver que permita interpretar los comandos AT que llegan desde el módulo celular y a su vez poder enviarle comandos para poder controlarlo.
+		\item Validación: conectar un conversor TTL a USB en las señales que comunican el microcontrolador con el módulo celular, para poder verificar la correcta comunicación usando una terminal serie en una PC.
+	\end{itemize}
+			
+	\item Requerimiento \#2.4: Implementar el protocolo definido para comunicar los comunicadores y el broker.
+	\begin{itemize}
+		\item Verificación: incluir en el firmware un módulo que implemente la lógica del protocolo de comunicación con el broker.
+		\item Validación: comprobar que la comunicación entre el comunicador y el broker cumpla con lo establecido en el protocolo diseñado.
+	\end{itemize}
+			
+	\item Requerimiento \#2.5: La conexión con el broker debe ser implementada con TLS.
+	\begin{itemize}
+		\item Verificación: tanto el módulo Wi-Fi como el módulo celular deben soportar conexiones seguras mediante TLS.
+		\item Validación: comprobar que la conexión que se abre entre el comnunicador y el broker utilice TLS.
+	\end{itemize}
+			
+	\item Requerimiento \#2.6: La conexión con el broker se debe mantener abierta permanentemente.
+	\begin{itemize}
+		\item Verificación: el firmware debe incluir la lógica que mantenga constantemente abierta la conexión con el broker y que en caso de cerrarse, la vuelva a abrir.
+		\item Validación: simular cortes en la conexión entre el comunicador y el broker y comprobar que se vuelve a establecer.
+	\end{itemize}
+			
+	\item Requerimiento \#2.7: Ser compatible con el protocolo de comunicación de las alarmas de X-28.
+	\begin{itemize}
+		\item Verificación: incluir en el firmware un módulo que se encargue de implementar el protocolo de comunicación propietarios de las alarmas de X-28.
+		\item Validación: corroborar recepción de mensajes enviados por otros dispositivos de la alarma y el envío de mensajes, por parte del comunicador, a otros equipos de la alarma.
+	\end{itemize}
+			
+	\item Requerimiento \#2.8: Guardar en la memoria EEPROM la configuración para el correcto funcionamiento del comunicador.
+	\begin{itemize}
+		\item Verificación: todos aquellos parámetros que el firmware necesite para funcionar deben ser guardados en la memoria EEPROM externa.
+		\item Validación: luego de hacer cambios en las configuraciones del comunicador, desconectar la alimentación y volver a conectarla. Comprobar que las configuraciones retienen los valores elegidos.
+	\end{itemize}
+			
+	\item Requerimiento \#2.9: Implementar la lógica necesaria para elegir prioritariamente la conexión con el broker mediante Wi-Fi y en caso de fallar, hacerlo mediante la red celular.
+	\begin{itemize}
+		\item Verificación: el comunicador debe mantenerse siempre conectado a Internet. El firmware debe elegir en primer lugar, conectarse a través de Wi-Fi y en caso de no poder hacerlo, pasar a la red celular.
+		\item Validación: simular situaciones en las cuales: deje de funcionar Wi-Fi, dejé de haber conexión a Internet en el router y deje de haber cobertura celular.
+	\end{itemize}
+			
+	\item Requerimiento \#3.1: Definir la forma en la que se van a identificar los dispositivos a nivel lógico con el broker.
+	\begin{itemize}
+		\item Verificación: el protocolo de comunicación entre los comunicadores y el broker debe incluir algún tipo de identificador único para comunicador.
+		\item Validación: comprobar que cada comunicador tiene un identificador único y que el broker lo reconoce.
+	\end{itemize}
+			
+	\item Requerimiento \#3.2: Permitir autenticar al dispositvo.
+	\begin{itemize}
+		\item Verificación: el protocolo debe incluir algún mecanismo para que un comunicador se autentique y de esta forma pueda empezar a comunicarse.
+		\item Validación: comprobar que si el dispositivo cumple con el proceso de autenticación se pueda comunicar con el broker, y en caso contrario, el broker cierre la conexión.
+	\end{itemize}
+			
+	\item Requerimiento \#3.3: Incluir una lógica de keepalive.
+	\begin{itemize}
+		\item Verificación: debe incluir un mecanismo para que los comunicadores indiquen que están conectados y funcionando.
+		\item Validación: entre los mensajes que llegan al broker desde los comunicadores, se deben encontrar los mensajes de keepalive y en caso de faltar, el broker debe señalizarlo.
+	\end{itemize}
+			
+	\item Requerimiento \#3.4: Permitir solicitar fecha y hora en función de la región en la que esté el comunicador.
+	\begin{itemize}
+		\item Verificación: en el protocolo se debe contemplar un mecanismo por medio del cual los comunicadores puedan solicitar la fecha y la hora al broker.
+		\item Validación: cuando desde un comunicador llegue la solicitud de la fecha y hora, el broker debe responderla.
+	\end{itemize}
+			
+	\item Requerimiento \#3.5: Implementar comandos para solicitarle información al comunicador.
+	\begin{itemize}
+		\item Verificación: en el protocolo se debe incluir un conjunto de comandos mediante los cuales se pueda solicitar información al comunicador.
+		\item Validación: enviar los comandos al comunicador y comprobar que la información que devuelva cumpla con lo indicado en el protocolo.
+	\end{itemize}
+			
+	\item Requerimiento \#3.6: Permitir el envío de eventos cuando ocurre un suceso en el sistema de alarma.
+	\begin{itemize}
+		\item Verificación: el protocolo debe incluir mensajes que sean usados por el comunicador  para informar sobre eventos que ocurrieron en la alarma.
+		\item Validación: generar eventos en la alarma y comprobar que los mensajes enviados por el comunicador cumplan con lo indicado en el protocolo.
+	\end{itemize}
+			
+	\item Requerimiento \#3.7: Permitir enviar comandos al comunicador para realizar acciones en la alarma.
+	\begin{itemize}
+		\item Verificación: el protocolo debe incluir un conjunto de comandos mediante los cuales se le indique al comunicador que tiene que realizar alguna acción en la alarma.
+		\item Validación: enviar estos comandos al comunicador y comprobar que realice las acciones indicadas en la alarma.
+	\end{itemize}
+			
+	\item Requerimiento \#4.1: Incluir un login.
+	\begin{itemize}
+		\item Verificación: la app debe incluir una o más pantallas que permitan realizar el proceso de login, incluyendo la creación de una nueva cuenta y la recuperación de una contraseña olvidada.
+		\item Validación: realizar una prueba en la que se cree una nueva cuenta, se la verifique, se realice el login y se pida recuperar la contraseña.
+	\end{itemize}
+			
+	\item Requerimiento \#4.2: Proceso guiado para ayudar a configurar la red Wi-Fi a la que se va a conectar el comunicador.
+	\begin{itemize}
+		\item Verificación: la app debe incluir una o más pantallas que guíen al usuario en el proceso de configurar una red Wi-Fi. En este proceso se le van a enviar los datos de la red Wi-Fi elegida al comunicador.
+		\item Validación: recorrer el proceso de configuración de la red Wi-Fi y comprobar que el comunicador se conecta exitósamente a la red.
+	\end{itemize}
+			
+	\item Requerimiento \#4.3: Cada usuario de la aplicación puede agregar múltiples alarmas para gestionarlas.
+	\begin{itemize}
+		\item Verificación: incluir una pantalla en la que el usuario pueda ver todos los comunicadores que tiene asociados y pueda agregar más.
+		\item Validación: llevar a cabo el proceso de agregar múltiples comunicadores y comprobar que se visualicen todos ellos en la app.
+	\end{itemize}
+			
+	\item Requerimiento \#4.4: Mostrar el estado de la alarma (activada, desactivada, sonando) y problemas que pueda presentar (batería baja, red eléctrica cortada, error de comunicación, etc).
+	\begin{itemize}
+		\item Verificación: en la app se debe representar el estado de cada una de las alarmas, así como también información general de esta.
+		\item Validación:
+	\end{itemize}
+			
+	\item Requerimiento \#4.5: Permitir enviar comandos a la alarma: activar, desactivar, cambiar su modo, disparar manualmente, incluir y excluir sensores, etc.
+	\begin{itemize}
+		\item Verificación: se debe incluir en la app la posibilidad de cambiar el estado de la alarma (activada/desactivada), cambiar su modo (modo Estoy, modo Me Voy), dispararla manualmente y cambiar la inclusión de los sensores.
+		\item Validación: disparar estas acciones desde la app y comprobar que ocurra lo esperado en la alarma a la que se le están enviando los comandos.
+	\end{itemize}
+			
+	\item Requerimiento \#4.6: Mostrar el estado de cada uno de los sensores.
+	\begin{itemize}
+		\item Verificación: incluir una pantalla en la que se visualice el estado de cada uno de los sensores de la alarma: estado normal o anormal.
+		\item Validación: cambiar el estado de los sensores de la alarma y comprobar que se estos cambios se reflejen en la app.
+	\end{itemize}
+			
+	\item Requerimiento \#4.7: Mostrar el estado de cada una de las cargas eléctrica de la alarma y permitir encenderlas o apagarlas.
+	\begin{itemize}
+		\item Verificación: la alarma puede incluir dispositivos para controlar cargas eléctricas. La app debe incluir una pantalla en la que se visualicen estos dispositivos y permita enviarle a la alarma el comando de encenderlos o apagarlos.
+		\item Validación: enviar desde la app los comandos de encender y apagar los controladores de cargas eléctricas y comprobar que esto ocurre en la alarma.
+	\end{itemize}
+			
+	\item Requerimiento \#4.8: Incluir el CRUD de los sensores que tiene la alarma.
+	\begin{itemize}
+		\item Verificación: se deben incluir en la interfaz de usuario los controles necesarios  para llevar a cabo las acciones de dar de alta, eliminar, modificar y leer los sensores que tiene la alarma.
+		\item Validación: realizar estas 4 acciones desde la app y ver los cambios se reflejen tanto en la app como en la base de datos.
+	\end{itemize}
+			
+	\item Requerimiento \#4.9: Incluir el CRUD de las cargas eléctricas que maneja la alarma.
+	\begin{itemize}
+		\item Verificación: se deben incluir en la interfaz de usuario los controles necesarios  para llevar a cabo las acciones de dar de alta, eliminar, modificar y leer los controladores de cargas eléctricas que tiene la alarma.
+		\item Validación: realizar estas 4 acciones desde la app y ver los cambios se reflejen tanto en la app como en la base de datos.
+	\end{itemize}
+			
+	\item Requerimiento \#4.10: Incluir el CRUD de los usuarios que tiene la alarma.
+	\begin{itemize}
+		\item Verificación: se deben incluir en la interfaz de usuario los controles necesarios  para llevar a cabo las acciones de dar de alta, eliminar, modificar y leer los usuarios que tiene la alarma.
+		\item Validación: realizar estas 4 acciones desde la app y ver los cambios se reflejen tanto en la app como en la base de datos.
+	\end{itemize}
+			
+	\item Requerimiento \#5.1: Permitir múltiples comunicadores conectados simultáneamente.
+	\begin{itemize}
+		\item Verificación: el broker debe ser capaz de mantener múltiples conexiones abiertas con los comunicadores.
+		\item Validación: conectar varios comunicadores al broker y comprobar que el broker pueda gestionar correctamente las conexiones.
+	\end{itemize}
+			
+	\item Requerimiento \#5.2: Interpretar la información que llega desde los comunicadores para actualizar la información en la base de datos.
+	\begin{itemize}
+		\item Verificación: el broker va a recibir mensajes con información proveniente de los comunicadores. Debe incluir la lógica para procesar esta información y actualizar la base de datos, registrando así el estado de la alarma y de sus componentes.
+		\item Validación: generar cambios en la alarma (activarla/desactivarla, incluir/excluir sensores, apagar/encender cargas eléctricas, etc) y comprobar que el broker recibe los mensajes y actualiza la base de datos.
+	\end{itemize}
+		
+	\item Requerimiento \#5.3: Reenviar los mensajes que llegan desde las aplicaciones móviles a los comunicadores.
+	\begin{itemize}
+		\item Verificación: el broker debe reenviar los comandos que lleguen desde las apps destinados a los comunicadores.
+		\item Validación: disparar acciones desde la app y comprobar que llegan al broker y luego son reenviados al comunicador que corresponde.
+	\end{itemize}
+			
+	\item Requerimiento \#5.4: Enviar notificaciones push a las aplicaciones cuando se produzcan eventos en los comunicadores que tienen asociados.
+	\begin{itemize}
+		\item Verificación: cuando se produzcan ciertos eventos en la alarma, el comunicador lo va a informar al broker. Cuando el broker reciba estos mensajes, debe enviar notificaciones push a todas las apps que lo tengan asociado.
+		\item Validación: generar eventos en la alarma y comprobar que aquellas app que tengan asociado al comunicador en cuestión, reciban las notificación push correspondientes a los eventos.
+	\end{itemize}
+			
+	\item Requerimiento \#6.1: Todos los endpoints deben incluir un token exclusivo para cada aplicación.
+	\begin{itemize}
+		\item Verificación: la API debe implementar la lógica para generar tokens que le permitan autenticar los requests que reciba desde las apps.
+		\item Validación: obtener desde la API el token y utilizarlo en los requests que lo requieran para comprobar que si no se lo incluye, el request devuelve un error.
+	\end{itemize}
+			
+	\item Requerimiento \#6.2: Implementar un endpoint para que las aplicaciones puedan autenticarse.
+	\begin{itemize}
+		\item Verificación: la API debe tener un endpoint el cual sea usado por las apps en el proceso de login.
+		\item Validación: enviar la información de login y comprobar que, en caso de que la información sea correcta, la API devuelve un token válido para esa app.
+	\end{itemize}
+			
+	\item Requerimiento \#6.3: Incluir endpoints para solicitar información de los comunicadores.
+	\begin{itemize}
+		\item Verificación: se deben incluir endpoints mediante los cuales se le indique al broker que debe enviar mensajes al comunicador para obtener información.
+		\item Validación: realizar los requests a estos endpoint y corroborar que se envíen los mensajes correctos al comunicador.
+	\end{itemize}
+			
+	\item Requerimiento \#6.4: Incluir endpoints para realizar el CRUD de comunicadores.
+	\begin{itemize}
+		\item Verificación: la API debe incluir los endpoint que permitan realizar las operaciones de CRUD de los comunicadores.
+		\item Validación: ejecutar los requests y comprobar que la base de datos se actualiza correctamente.
+	\end{itemize}
+			
+	\item Requerimiento \#6.5: Incluir endpoints para realizar el CRUD de los sensores de una alarma
+	\begin{itemize}
+		\item Verificación: la API debe incluir los endpoint que permitan realizar las operaciones de CRUD de los sensores.
+		\item Validación: ejecutar los requests y comprobar que la base de datos se actualiza correctamente.
+	\end{itemize}
+			
+	\item Requerimiento \#6.6: Incluir endpoints para realizar el CRUD de las usuarios de una alarma
+	\begin{itemize}
+		\item Verificación: la API debe incluir los endpoint que permitan realizar las operaciones de CRUD de los usuarios de una alarma.
+		\item Validación: ejecutar los requests y comprobar que la base de datos se actualiza correctamente.
+	\end{itemize}
+			
+	\item Requerimiento \#6.7: Incluir endpoints para realizar el CRUD de las cargas eléctricas de una alarma
+	\begin{itemize}
+		\item Verificación: la API debe incluir los endpoint que permitan realizar las operaciones de CRUD de los conroladores de cargas eléctricas.
+		\item Validación: ejecutar los requests y comprobar que la base de datos se actualiza correctamente.
+	\end{itemize}
+			
+	\item Requerimiento \#6.8: Incluir endpoints para enviar comandos a los comunicadores.
+	\begin{itemize}
+		\item Verificación: se deben incluir endpoints mediante los cuales se le indique al broker que debe enviar comandos al comunicador.
+		\item Validación: realizar los requests a estos endpoint y corroborar que se envíen los comandos correctos al comunicador.
+	\end{itemize}
+			
+	\item Requerimiento \#7.1: Persistir los identificadores de los comunicadores que fueron fabricados.
+	\begin{itemize}
+		\item Verificación: en el proceso de fabricación de los comunicadores, se debe incluir una etapa en la que se den de alta en el backend los comunicadores.
+		\item Validación: comprobar que luego del proceso de alta de los comunicadores en el backend, queden registrados en la base de datos.
+	\end{itemize}
+			
+	\item Requerimiento \#7.2: Persistir la información de los usuarios de las aplicaciones y qué comunicadores tienen asociados.
+	\begin{itemize}
+		\item Verificación: la base de datos debe incluir las tablas necesarias para registrar los usuarios creados en las apps y los comunicadores que tienen vinculados.
+		\item Validación: al crear un usuario en una app y vincularlo a comunicadores, comprobar que esta información es agregada a la base de datos
+	\end{itemize}
+			
+	\item Requerimiento \#7.3: Persistir la información del estado de cada alarma: estado de cada sensor, estado de la red eléctrica, estado de la batería; nombres de los sensores, usuarios y cargas eléctricas.
+	\begin{itemize}
+		\item Verificación: la base de datos debe incluir las tablas necesarias para modelar toda la información de una alarma, desde su estado hasta información los dispositivos que la componen.
+		\item Validación: realizar cambios y generar eventos en la alarma. Comprobar que esta información queda reflejada en la base de datos.
+	\end{itemize}
+		
 \end{itemize}
 
-\end{itemize}
 
-Tener en cuenta que en este contexto se pueden mencionar simulaciones, cálculos, revisión de hojas de datos, consulta con expertos, mediciones, etc.  Las acciones de verificación suelen considerar al entregable como ``caja blanca'', es decir se conoce en profundidad su funcionamiento interno.  En cambio, las acciones de validación suelen considerar al entregable como ``caja negra'', es decir, que no se conocen los detalles de su funcionamiento interno.
-
-\end{consigna}
+%\end{consigna}
 
 
 \section{14. Procesos de cierre}    
 \label{sec:cierre}
 
-\begin{consigna}{red}
-Establecer las pautas de trabajo para realizar una reunión final de evaluación del proyecto, tal que contemple las siguientes actividades:
+%\begin{consigna}{red}
 
 \begin{itemize}
-	\item Pautas de trabajo que se seguirán para analizar si se respetó el Plan de Proyecto original:
-	 - Indicar quién se ocupará de hacer esto y cuál será el procedimiento a aplicar. 
-	\item Identificación de las técnicas y procedimientos útiles e inútiles que se emplearon, y los problemas que surgieron y cómo se solucionaron:
-	 - Indicar quién se ocupará de hacer esto y cuál será el procedimiento para dejar registro.
-	\item Indicar quién organizará el acto de agradecimiento a todos los interesados, y en especial al equipo de trabajo y colaboradores:
-	  - Indicar esto y quién financiará los gastos correspondientes.
+	\item Pautas de trabajo que se seguirán para analizar si se respetó el Plan de Proyecto original
+	\begin{itemize}
+		\item Encargado: Mariano Mondani.
+		\item Se revisará el plan de trabajo y se revisará punto por punto el cumplimiento de los
+requerimientos y objetivos.
+		\item Se revisará el diagrama de Gantt y se analizarán las demoras que pudieran aparecer.
+		\item Se pedirá la opinión de los auspiciantes y del cliente para discutir el grado de
+satisfacción con el resultado del proyecto.
+	\end{itemize}
+	
+	\item Identificación de las técnicas y procedimientos útiles e inútiles que se utilizaron, y los problemas que surgieron y cómo se solucionaron
+	\begin{itemize}
+		\item Encargado: Mariano Mondani.
+		\item Se realizará una reunión con los auspiciantes y los colaboradores de la empresa.
+		\item A partir de la memoria escrita se discutirán las técnicas usadas tanto en el desarrollo del hardware como del software.
+		\item Se analizará cuáles de estas técnicas puede ser incorporada a la base de conocimiento del sector de Desarrollo para aplicar en futuros proyectos.
+		\item Se plantearán los problemas que surgieron durante el proyecto y se discutirá si las
+soluciones implementadas fueron las más convenientes.
+	\end{itemize}
+	
+	\item Acto de agradecimiento a todos los interesados, y en especial al equipo de trabajo y
+colaboradores
+	\begin{itemize}
+		\item Encargado: Mariano Mondani.
+		\item Se escribirá un agradecimiento a los auspiciantes y a los colaboradores en la memoria del proyecto.
+		\item  Se enviará la presentación y la memoria del proyecto a los auspiciantes y
+colaboradores, expresando el profundo agradecimiento hacia ellos.
+	\end{itemize}
 \end{itemize}
 
-\end{consigna}
+%\end{consigna}
 
 
 \end{document}
