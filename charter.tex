@@ -335,11 +335,79 @@ Para el desarrollo del presente proyecto se supone que:
 \section{5. Historias de usuarios (\textit{Product backlog})}
 \label{sec:backlog}
 
-\begin{consigna}{red}
-Descripción: En esta sección se deben incluir las historias de usuarios y su ponderación (\textit{history points}). Recordar que las historias de usuarios son descripciones cortas y simples de una característica contada desde la perspectiva de la persona que desea la nueva capacidad, generalmente un usuario o cliente del sistema. La ponderación es un número entero que representa el tamaño de la historia comparada con otras historias de similar tipo.
+%\begin{consigna}{red}
 
-Se debe indicar explícitamente el criterio para calcular los \textit{story points} de cada historia
-\end{consigna}
+Para este proyecto, la ponderación de las historias de usuario se realizará a través de \textit{story points}. El valor se va a determinar a partir de tres aspectos: cantidad de trabajo a realizar, complejidad del trabajo a realizar e incertidumbre del trabajo a realizar. La escala para cada uno de estos aspectos es:
+
+\begin{itemize}
+	\item Cantidad de trabajo:
+	\begin{itemize}
+		\item Alta: 13
+		\item Media: 5
+		\item Baja: 1
+	\end{itemize}
+	
+	\item Complejidad del trabajo:
+	\begin{itemize}
+		\item Alta: 8
+		\item Media: 3
+		\item Baja: 1
+	\end{itemize}
+	
+	\item Incertidumbre del trabajo:
+	\begin{itemize}
+		\item Alta: 3
+		\item Media: 2
+		\item Baja: 1
+	\end{itemize}
+\end{itemize}
+
+Para determinar los \textit{story points} de cada historia, se sumará el puntaje asignado a cada aspecto y se lo aproximará al siguiente número de la serie de Fibonacci (1, 2, 3, 5, 8, 13, 21, 34, 55)
+
+\begin{enumerate}
+	\item Como usuario de la alarma quiero recibir notificaciones en el celular cuando se produzca un disparo en mi alarma.
+	\begin{itemize}
+		\item Cantidad de trabajo: Media (5)
+		\item Complejidad del trabajo: Media (3)
+		\item Incertidumbre del trabajo: Baja (1)
+		\item \textit{Story points}: 13
+	\end{itemize}
+	
+	\item Como usuario de la alarma quiero activar o desactivar mi central de alarma.
+	\begin{itemize}
+		\item Cantidad de trabajo: Media (5)
+		\item Complejidad del trabajo: Baja (1)
+		\item Incertidumbre del trabajo: Baja (1)
+		\item \textit{Story points}: 8
+	\end{itemize}
+	
+	\item Como usuario de la alarma quiero poder ver el estado general de mi alarma y los dispositivos que la integran (sensores, cargas eléctricas, etc)
+	\begin{itemize}
+		\item Cantidad de trabajo: Alta (13)
+		\item Complejidad del trabajo: Alta (8)
+		\item Incertidumbre del trabajo: Media (2)
+		\item \textit{Story points}: 34
+	\end{itemize}
+	
+	\item Como usuario de la alarma quiero poder asociar mi usuario de la app a varios equipos de alarma para poder gestionarlos.
+	\begin{itemize}
+		\item Cantidad de trabajo: Baja (1)
+		\item Complejidad del trabajo: Media (3)
+		\item Incertidumbre del trabajo: Media (2)
+		\item \textit{Story points}: 8
+	\end{itemize}
+	
+	\item Como usuario de la alarma quiero poder asignarle un nombre a cada sensor y carga eléctrica que compone mi sistema.
+	\begin{itemize}
+		\item Cantidad de trabajo: Media (5)
+		\item Complejidad del trabajo: Media (3)
+		\item Incertidumbre del trabajo: Baja (1)
+		\item \textit{Story points}: 13
+	\end{itemize}
+\end{enumerate}
+
+
+%\end{consigna}
 
 \section{6. Entregables principales del proyecto}
 \label{sec:entregables}
