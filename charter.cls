@@ -190,11 +190,11 @@
 	
 	\flushleft
 	{\normalsize Autor:\\}
-	{\Large \authorname \\}
+	{\Large Esp. Ing. \authorname \\}
 	\vspace{1cm}
 	
 	{\normalsize Director:\\}
-	{\Large \supname \hspace{1px} (\pertesupname) \\}
+	{\Large Mg. Ing. \supname \hspace{1px} (\pertesupname) \\}
 	%\vspace{2cm}
 	\ifbool{codirector}{% If the codirector class option has been specified
 	\vspace{10px}
